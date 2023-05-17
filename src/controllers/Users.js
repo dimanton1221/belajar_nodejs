@@ -1,17 +1,14 @@
 // req express
 // const express = require("express");
+const userModel = require("../models/Users");
 
-const getAllUser = (req, res) => {
-    const data =
-    {
-        id: 1,
-        name: "izzam",
-        username: "macoding777"
-    };
+
+const getAllUser = async (req, res) => {
+    const [data] = await userModel.getAllUser();
     res.json(
         {
             message: "Get All User Successfully",
-            username: data
+            data: data
         }
     )
 }
@@ -43,7 +40,7 @@ const deleteUser = (req, res) => {
         {
             message: "Delete User Successfully",
             data: {
-                name:"izzam",
+                name: "izzam",
                 "id": idUser,
             }
         }
